@@ -1,0 +1,6 @@
+{
+  "name": "Coinbase Clone",
+  "description": "A full-stack cryptocurrency platform with authentication, user profiles, and dynamic crypto listings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

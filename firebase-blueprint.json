@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "Additional user information stored in Firestore",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "email"]
+    },
+    "Crypto": {
+      "title": "Cryptocurrency",
+      "description": "Data for a specific cryptocurrency",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "symbol": { "type": "string" },
+        "price": { "type": "number" },
+        "image": { "type": "string" },
+        "change24h": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "symbol", "price", "image", "change24h"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles indexed by their Auth UID"
+    },
+    "/cryptos/{cryptoId}": {
+      "schema": "Crypto",
+      "description": "List of cryptocurrencies"
+    }
+  }
+}

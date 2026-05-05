@@ -46,9 +46,17 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cookieParser());
+
+// Allow both local development and production origins
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.FRONTEND_ORIGIN,
+].filter(Boolean);
+
 app.use(
 cors({
-origin: process.env.FRONTEND_ORIGIN || "http://localhost:5173",
+origin: allowedOrigins,
 credentials: true,
 })
 );

@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 import admin from "firebase-admin";
 import { getFirestore } from "firebase-admin/firestore";
 
@@ -57,6 +58,12 @@ async function startServer() {
 
   app.use(express.json());
   app.use(cookieParser());
+  app.use(
+    cors({
+      origin: process.env.FRONTEND_ORIGIN || "http://localhost:5173",
+      credentials: true,
+    })
+  );
 
   const authenticateToken = async (req, res, next) => {
     const token = req.cookies.token;
